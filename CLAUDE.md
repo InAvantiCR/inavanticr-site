@@ -5,10 +5,17 @@ Sitio web oficial de In Avanti (restaurante y alimentación para empresas en La 
 ## Reglas de trabajo
 - Nunca hacer push directo a `main`. Una rama por cambio y un Pull Request; el dueño revisa la vista previa y hace el merge.
 - El repositorio es **público**: nunca guardar contraseñas, claves, precios internos, cédulas ni datos de clientes.
-- Sitio estático: HTML semántico + CSS, fuentes del sistema, sin frameworks ni dependencias. No agregar un paso de build sin consultarlo.
+- Sitio estático: HTML semántico + CSS, fuentes del sistema, sin frameworks ni dependencias. El único paso de build es `node build.mjs` (Node puro, sin paquetes), que arma el sitio en `dist/`. No agregar otros pasos ni dependencias sin consultarlo.
 - Las imágenes e íconos viven en la raíz del repo (no hay carpeta `assets/`).
 - Mantener `_headers` (seguridad). Si se agrega un servicio de terceros (analítica, mapas, formularios), actualizar la Content-Security-Policy.
 - Idioma del sitio: español de Costa Rica. Tono de la web: de usted, formal y ejecutivo.
+
+## Ficha maestra (`ficha.json`)
+- `ficha.json` es la única fuente de los datos del negocio: nombre, lema, dirección, GPS, teléfono, WhatsApp, correo, horario, redes, servicios, colores. Cambiar un dato ahí lo cambia en todo el sitio y en el JSON-LD.
+- Nunca escribir esos datos a mano en el HTML. Usar `{{campo}}` (texto escapado) o `{{{campo}}}` (HTML que arma `build.mjs`, como `horario_html` o `schema`). Los campos calculados (`telefono_enlace`, `wa.<mensaje>`, `mapa_url`, `waze_url`, `direccion_completa`, `anio`) están en `build.mjs`.
+- El JSON-LD `Restaurant` se genera con `{{{schema}}}`; agrega `geo` y `sameAs` solo cuando la ficha tiene coordenadas y redes.
+- Si un campo no existe, el build falla a propósito y Cloudflare no publica. Probar siempre con `node build.mjs` antes de abrir el PR.
+- `ficha.json`, `build.mjs` y `CLAUDE.md` no se publican en el sitio.
 
 ## Estándares SEO
 - Un H1 por página con la actividad y la zona; title (~50–60 caracteres) y meta description (~140–155) únicos.
@@ -19,7 +26,4 @@ Sitio web oficial de In Avanti (restaurante y alimentación para empresas en La 
 - Objetivos: Lighthouse ≥ 90 en móvil; Core Web Vitals en verde.
 
 ## Datos públicos del negocio
-- In Avanti — "El Placer de la Variedad"
-- Outlet Center, local #10, 200 m oeste de la Zona Franca Metropolitana, La Aurora, Ulloa, Heredia
-- Lunes a viernes 7:00 a.m.–3:00 p.m. · Sábado 7:00 a.m.–2:30 p.m.
-- Tel./WhatsApp +506 7019-1780 · admin@inavanticr.com
+Ver `ficha.json`.

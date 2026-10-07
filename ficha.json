@@ -1,0 +1,58 @@
+{
+  "nombre": "In Avanti",
+  "lema": "El Placer de la Variedad",
+  "fundacion": "2017",
+  "sitio": "https://inavanticr.com",
+
+  "direccion": {
+    "calle": "Outlet Center, local #10, 200 m oeste de la Zona Franca Metropolitana",
+    "localidad": "La Aurora",
+    "distrito": "Ulloa",
+    "provincia": "Heredia",
+    "codigo_postal": "40104",
+    "pais": "CR"
+  },
+  "geo": { "lat": null, "lng": null },
+
+  "telefono": "+506 7019-1780",
+  "whatsapp": "+506 7019-1780",
+  "correo": "admin@inavanticr.com",
+
+  "horario": [
+    { "dias": "Lunes a viernes", "dias_en": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "abre": "07:00", "cierra": "15:00" },
+    { "dias": "Sábado", "dias_en": ["Saturday"], "abre": "07:00", "cierra": "14:30" }
+  ],
+  "horario_empresas": "Empresas y eventos: horario a la medida",
+
+  "rango_precios": "₡₡",
+  "cocina": ["Costarricense", "Internacional", "Buffet"],
+  "area_servida": "Gran Área Metropolitana, Costa Rica",
+  "servicios": [
+    "Convenios de alimentación para colaboradores",
+    "Comedores empresariales",
+    "Eventos y catering corporativo",
+    "Regalos y empaques corporativos personalizados"
+  ],
+
+  "descripcion_corta": "Buffet por kilo con menú distinto cada día y alimentación para empresas, a 200 m de la Zona Franca Metropolitana, Heredia.",
+
+  "redes": {
+    "google_maps": "",
+    "facebook": "",
+    "instagram": "",
+    "tiktok": "",
+    "linkedin": ""
+  },
+
+  "whatsapp_mensajes": {
+    "general": "Hola In Avanti",
+    "empresas": "Hola, quiero información sobre alimentación para mi empresa",
+    "eventos": "Hola, quiero cotizar un evento para mi empresa"
+  },
+
+  "colores": {
+    "acento": "#b4441c",
+    "acento_oscuro": "#8f3514",
+    "texto": "#1a1a1a"
+  }
+}

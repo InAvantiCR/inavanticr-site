@@ -1,1 +1,1 @@
-{"name":"In Avanti","short_name":"In Avanti","start_url":"/","display":"browser","background_color":"#ffffff","theme_color":"#1a1a1a","icons":[{"src":"/icon-180.png","sizes":"180x180","type":"image/png"},{"src":"/icon-512.png","sizes":"512x512","type":"image/png"}]}
+{"name":"{{nombre}}","short_name":"{{nombre}}","start_url":"/","display":"browser","background_color":"#ffffff","theme_color":"{{colores.texto}}","icons":[{"src":"/icon-180.png","sizes":"180x180","type":"image/png"},{"src":"/icon-512.png","sizes":"512x512","type":"image/png"}]}
