@@ -7,14 +7,14 @@
 <meta name="description" content="Convenios de alimentación, comedores empresariales y eventos para empresas. Buffet por kilo con menú distinto cada día, a 200 m de la Zona Franca Metropolitana.">
 <link rel="canonical" href="https://inavanticr.com/">
 <meta name="robots" content="index,follow">
-<meta name="theme-color" content="#1a1a1a">
+<meta name="theme-color" content="{{colores.texto}}">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/icon-512.png" type="image/png" sizes="512x512">
 <link rel="apple-touch-icon" href="/icon-180.png">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CR">
-<meta property="og:site_name" content="In Avanti">
+<meta property="og:site_name" content="{{nombre}}">
 <meta property="og:title" content="In Avanti | Alimentación para empresas en Heredia">
 <meta property="og:description" content="Convenios de alimentación, comedores empresariales, eventos y buffet por kilo con menú distinto cada día. A 200 m de la Zona Franca Metropolitana.">
 <meta property="og:url" content="https://inavanticr.com/">
@@ -22,49 +22,9 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "@id": "https://inavanticr.com/#restaurant",
-  "name": "In Avanti",
-  "slogan": "El Placer de la Variedad",
-  "url": "https://inavanticr.com/",
-  "logo": "https://inavanticr.com/logo.png",
-  "image": "https://inavanticr.com/og.jpg",
-  "telephone": "+50670191780",
-  "email": "admin@inavanticr.com",
-  "priceRange": "₡₡",
-  "servesCuisine": ["Costarricense", "Internacional", "Buffet"],
-  "acceptsReservations": true,
-  "foundingDate": "2017",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Outlet Center, local #10, 200 m oeste de la Zona Franca Metropolitana",
-    "addressLocality": "La Aurora, Ulloa",
-    "addressRegion": "Heredia",
-    "postalCode": "40104",
-    "addressCountry": "CR"
-  },
-  "openingHoursSpecification": [
-    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "15:00"},
-    {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "07:00", "closes": "14:30"}
-  ],
-  "areaServed": "Gran Área Metropolitana, Costa Rica",
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Servicios para empresas",
-    "itemListElement": [
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Convenios de alimentación para colaboradores"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Comedores empresariales"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Eventos y catering corporativo"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Regalos y empaques corporativos personalizados"}}
-    ]
-  }
-}
-</script>
+{{{schema}}}
 <style>
-:root{--ink:#1a1a1a;--muted:#555;--line:#e5e2dc;--bg:#fff;--soft:#f7f5f1;--accent:#b4441c;--accent-d:#8f3514;--radius:14px;--max:1100px}
+:root{--ink:{{colores.texto}};--muted:#555;--line:#e5e2dc;--bg:#fff;--soft:#f7f5f1;--accent:{{colores.acento}};--accent-d:{{colores.acento_oscuro}};--radius:14px;--max:1100px}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px}
@@ -111,7 +71,7 @@ footer a{color:#fff}
 <a class="skip" href="#contenido">Saltar al contenido</a>
 <header>
   <div class="wrap bar">
-    <a href="/" aria-label="In Avanti, inicio"><img src="/logo.webp" alt="In Avanti — El Placer de la Variedad" width="560" height="296"></a>
+    <a href="/" aria-label="{{nombre}}, inicio"><img src="/logo.webp" alt="{{nombre}} — {{lema}}" width="560" height="296"></a>
     <nav aria-label="Principal">
       <ul>
         <li><a href="#empresas">Empresas</a></li>
@@ -126,11 +86,11 @@ footer a{color:#fff}
 <main id="contenido">
   <div class="hero">
     <div class="wrap">
-      <p class="kicker">La Aurora, Heredia · Desde 2017</p>
+      <p class="kicker">{{direccion.localidad}}, {{direccion.provincia}} · Desde {{fundacion}}</p>
       <h1>Alimentación para empresas y buffet por kilo en Heredia</h1>
       <p class="lead">In Avanti es la solución de alimentación para las empresas de la zona: convenios para sus colaboradores, comedores empresariales y eventos corporativos. Y un restaurante abierto al público con un menú distinto cada día, a 200 metros de la Zona Franca Metropolitana.</p>
       <div class="cta">
-        <a class="btn btn-primary" href="https://wa.me/50670191780?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20alimentaci%C3%B3n%20para%20mi%20empresa">Solicitar propuesta para su empresa</a>
+        <a class="btn btn-primary" href="{{wa.empresas}}">Solicitar propuesta para su empresa</a>
         <a class="btn btn-outline" href="#restaurante">Ver el restaurante</a>
       </div>
     </div>
@@ -155,7 +115,7 @@ footer a{color:#fff}
         </div>
       </div>
       <div class="facts" aria-label="In Avanti en cifras">
-        <div><strong>2017</strong><span>atendiendo empresas de la zona</span></div>
+        <div><strong>{{fundacion}}</strong><span>atendiendo empresas de la zona</span></div>
         <div><strong>+10</strong><span>clientes corporativos</span></div>
         <div><strong>200 m</strong><span>de la Zona Franca Metropolitana</span></div>
       </div>
@@ -176,7 +136,7 @@ footer a{color:#fff}
         <li>Empaques y regalos corporativos personalizados con su marca</li>
       </ul>
       <div class="cta" style="margin-top:28px">
-        <a class="btn btn-primary" href="https://wa.me/50670191780?text=Hola%2C%20quiero%20cotizar%20un%20evento%20para%20mi%20empresa">Cotizar un evento</a>
+        <a class="btn btn-primary" href="{{wa.eventos}}">Cotizar un evento</a>
       </div>
     </div>
   </section>
@@ -211,21 +171,21 @@ footer a{color:#fff}
         <h2 id="t-contacto">Visítenos o escríbanos</h2>
         <dl>
           <dt>Dirección</dt>
-          <dd>Outlet Center, local #10, 200 m oeste de la Zona Franca Metropolitana, La Aurora, Ulloa, Heredia</dd>
+          <dd>{{direccion_completa}}</dd>
           <dt>Horario</dt>
-          <dd>Lunes a viernes: 7:00 a.m. a 3:00 p.m.<br>Sábado: 7:00 a.m. a 2:30 p.m.<br>Empresas y eventos: horario a la medida</dd>
+          <dd>{{{horario_html}}}</dd>
           <dt>Teléfono y WhatsApp</dt>
-          <dd><a href="tel:+50670191780">+506 7019-1780</a></dd>
+          <dd><a href="{{telefono_enlace}}">{{telefono}}</a></dd>
           <dt>Correo</dt>
-          <dd><a href="mailto:admin@inavanticr.com">admin@inavanticr.com</a></dd>
+          <dd><a href="{{correo_enlace}}">{{correo}}</a></dd>
         </dl>
       </div>
       <div>
         <h2>Cómo llegar</h2>
         <p class="sub" style="margin-bottom:20px">A 200 metros al oeste de la Zona Franca Metropolitana, dentro del Outlet Center.</p>
         <div class="cta">
-          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Outlet%20Center%20La%20Aurora%20Heredia" target="_blank" rel="noopener">Abrir en Google Maps</a>
-          <a class="btn btn-outline" href="https://waze.com/ul?q=Outlet%20Center%20La%20Aurora%20Heredia&amp;navigate=yes" target="_blank" rel="noopener">Abrir en Waze</a>
+          <a class="btn btn-primary" href="{{mapa_url}}" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          <a class="btn btn-outline" href="{{waze_url}}" target="_blank" rel="noopener">Abrir en Waze</a>
         </div>
       </div>
     </div>
@@ -234,13 +194,13 @@ footer a{color:#fff}
 
 <footer>
   <div class="wrap">
-    <p><strong>In Avanti</strong> — El Placer de la Variedad<br>
-    Outlet Center, local #10, 200 m oeste de la Zona Franca Metropolitana, La Aurora, Ulloa, Heredia, Costa Rica<br>
-    <a href="tel:+50670191780">+506 7019-1780</a> · <a href="mailto:admin@inavanticr.com">admin@inavanticr.com</a></p>
-    <p>© 2026 In Avanti. Todos los derechos reservados.</p>
+    <p><strong>{{nombre}}</strong> — {{lema}}<br>
+    {{direccion_completa}}, Costa Rica<br>
+    <a href="{{telefono_enlace}}">{{telefono}}</a> · <a href="{{correo_enlace}}">{{correo}}</a></p>
+    <p>© {{anio}} {{nombre}}. Todos los derechos reservados.</p>
   </div>
 </footer>
 
-<a class="wa" href="https://wa.me/50670191780?text=Hola%20In%20Avanti" aria-label="Escríbanos por WhatsApp">WhatsApp</a>
+<a class="wa" href="{{wa.general}}" aria-label="Escríbanos por WhatsApp">WhatsApp</a>
 </body>
 </html>
