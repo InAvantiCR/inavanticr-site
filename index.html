@@ -26,15 +26,15 @@
 <style>
 :root{--ink:{{colores.texto}};--muted:#555;--line:#e5e2dc;--bg:#fff;--soft:#f7f5f1;--accent:{{colores.acento}};--accent-d:{{colores.acento_oscuro}};--radius:14px;--max:1100px}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:140px}
 body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px}
 img{max-width:100%;height:auto;display:block}
 a{color:var(--accent)}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
 .skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;background:#000;color:#fff;padding:8px 12px;border-radius:6px;z-index:99}
 header{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:50}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
-.bar img{width:120px}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:96px;padding-top:14px;padding-bottom:14px}
+.bar img{width:190px}
 nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
 nav a{display:block;padding:8px 12px;border-radius:8px;color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
 nav a:hover,nav a:focus-visible{background:var(--soft);color:var(--accent)}
@@ -71,7 +71,7 @@ footer .redes a:hover,footer .redes a:focus-visible{border-color:#fff;color:#fff
 footer{background:var(--ink);color:#ddd;padding:36px 0;font-size:15px}
 footer a{color:#fff}
 .wa{position:fixed;right:18px;bottom:18px;background:#1f8f4e;color:#fff;border-radius:999px;padding:14px 20px;font-weight:700;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.18);z-index:60}
-@media (max-width:760px){nav{display:none}.bar img{width:104px}.hero{padding:40px 0}section{padding:48px 0}}
+@media (max-width:760px){html{scroll-padding-top:110px}nav{display:none}.bar{min-height:76px;padding-top:10px;padding-bottom:10px}.bar img{width:150px}.hero{padding:40px 0}section{padding:48px 0}}
 </style>
 </head>
 <body>
