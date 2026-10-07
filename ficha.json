@@ -12,10 +12,13 @@
     "codigo_postal": "40104",
     "pais": "CR"
   },
-  "geo": { "lat": null, "lng": null },
+  "geo": { "lat": 9.9811681, "lng": -84.1491725 },
 
-  "telefono": "+506 7019-1780",
-  "whatsapp": "+506 7019-1780",
+  "telefonos": {
+    "pedidos": { "numero": "+506 8801-9166", "uso": "Pedidos por llamada y WhatsApp" },
+    "administracion": { "numero": "+506 7019-1780", "uso": "Administración, convenios y servicios para empresas" }
+  },
+  "telefono_principal": "pedidos",
   "correo": "admin@inavanticr.com",
 
   "horario": [
@@ -37,17 +40,23 @@
   "descripcion_corta": "Buffet por kilo con menú distinto cada día y alimentación para empresas, a 200 m de la Zona Franca Metropolitana, Heredia.",
 
   "redes": {
-    "google_maps": "",
-    "facebook": "",
-    "instagram": "",
-    "tiktok": "",
+    "facebook": "https://www.facebook.com/inavantibuffetycafe",
+    "instagram": "https://www.instagram.com/in.avanticr",
+    "tiktok": "https://www.tiktok.com/@rest..in.avanti",
     "linkedin": ""
   },
 
+  "enlaces": {
+    "google_maps": "https://maps.google.com/?cid=1528684160093857730",
+    "waze": "https://ul.waze.com/ul?from=place.w.180813924.1807811558.13866278",
+    "uber_eats": "https://www.ubereats.com/cr/store/in-avanti/dXemgHAqQm6hZ0mHlNPzAw"
+  },
+
   "whatsapp_mensajes": {
-    "general": "Hola In Avanti",
-    "empresas": "Hola, quiero información sobre alimentación para mi empresa",
-    "eventos": "Hola, quiero cotizar un evento para mi empresa"
+    "general": { "telefono": "pedidos", "texto": "Hola In Avanti" },
+    "pedidos": { "telefono": "pedidos", "texto": "Hola, quiero hacer un pedido" },
+    "empresas": { "telefono": "administracion", "texto": "Hola, quiero información sobre alimentación para mi empresa" },
+    "eventos": { "telefono": "administracion", "texto": "Hola, quiero cotizar un evento para mi empresa" }
   },
 
   "colores": {

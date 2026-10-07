@@ -15,32 +15,46 @@ const PLANTILLAS = new Set([".html", ".webmanifest"]);
 
 const ficha = JSON.parse(readFileSync("ficha.json", "utf8"));
 
-for (const campo of ["nombre", "lema", "sitio", "telefono", "whatsapp", "correo", "direccion.calle", "direccion.localidad", "direccion.distrito", "direccion.provincia"]) {
+for (const campo of ["nombre", "lema", "sitio", "correo", "telefono_principal", "direccion.calle", "direccion.localidad", "direccion.distrito", "direccion.provincia"]) {
   if (!valor(ficha, campo)) falla(`ficha.json: falta "${campo}"`);
 }
 if (!Array.isArray(ficha.horario) || ficha.horario.length === 0) falla(`ficha.json: falta "horario"`);
+const telefonos = ficha.telefonos || {};
+for (const [k, t] of Object.entries(telefonos)) {
+  if (!/^\+506 \d{4}-\d{4}$/.test(t.numero || "")) falla(`ficha.json: telefonos.${k}.numero debe tener formato +506 XXXX-XXXX`);
+}
+if (!telefonos[ficha.telefono_principal]) falla(`ficha.json: telefono_principal "${ficha.telefono_principal}" no está en telefonos`);
+for (const [k, m] of Object.entries(ficha.whatsapp_mensajes || {})) {
+  if (!telefonos[m.telefono]) falla(`ficha.json: whatsapp_mensajes.${k} usa el teléfono "${m.telefono}", que no está en telefonos`);
+}
 
 const soloDigitos = (s) => s.replace(/\D/g, "");
 const d = ficha.direccion;
 const sitio = ficha.sitio.replace(/\/$/, "");
 const tieneGeo = ficha.geo && typeof ficha.geo.lat === "number" && typeof ficha.geo.lng === "number";
 const destino = tieneGeo ? `${ficha.geo.lat},${ficha.geo.lng}` : `${d.calle.split(",")[0]} ${d.localidad} ${d.provincia}`;
-const whatsappBase = `https://wa.me/${soloDigitos(ficha.whatsapp)}`;
+const enlaces = ficha.enlaces || {};
+const telPrincipal = `+${soloDigitos(telefonos[ficha.telefono_principal].numero)}`;
 
 // Valores calculados a partir de la ficha
 const datos = {
   ...ficha,
   anio: String(new Date().getFullYear()),
   direccion_completa: `${d.calle}, ${d.localidad}, ${d.distrito}, ${d.provincia}`,
-  telefono_enlace: `tel:+${soloDigitos(ficha.telefono)}`,
+  tel: Object.fromEntries(Object.entries(telefonos).map(([k, t]) => [k, `tel:+${soloDigitos(t.numero)}`])),
   correo_enlace: `mailto:${ficha.correo}`,
   wa: Object.fromEntries(
-    Object.entries(ficha.whatsapp_mensajes || {}).map(([k, txt]) => [k, `${whatsappBase}?text=${encodeURIComponent(txt)}`])
+    Object.entries(ficha.whatsapp_mensajes || {}).map(([k, m]) => [
+      k,
+      `https://wa.me/${soloDigitos(telefonos[m.telefono].numero)}?text=${encodeURIComponent(m.texto)}`,
+    ])
   ),
-  mapa_url: ficha.redes?.google_maps || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destino)}`,
-  waze_url: tieneGeo
-    ? `https://waze.com/ul?ll=${encodeURIComponent(destino)}&navigate=yes`
-    : `https://waze.com/ul?q=${encodeURIComponent(destino)}&navigate=yes`,
+  mapa_url: enlaces.google_maps || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destino)}`,
+  waze_url:
+    enlaces.waze ||
+    (tieneGeo
+      ? `https://waze.com/ul?ll=${encodeURIComponent(destino)}&navigate=yes`
+      : `https://waze.com/ul?q=${encodeURIComponent(destino)}&navigate=yes`),
   horario_html: ficha.horario
     .map((h) => `${esc(h.dias)}: ${hora(h.abre)} a ${hora(h.cierra)}`)
     .concat(ficha.horario_empresas ? [esc(ficha.horario_empresas)] : [])
@@ -86,7 +100,7 @@ function schema() {
     url: `${sitio}/`,
     logo: `${sitio}/logo.png`,
     image: `${sitio}/og.jpg`,
-    telephone: `+${soloDigitos(ficha.telefono)}`,
+    telephone: telPrincipal,
     email: ficha.correo,
     priceRange: ficha.rango_precios,
     servesCuisine: ficha.cocina,
@@ -113,9 +127,16 @@ function schema() {
       itemListElement: (ficha.servicios || []).map((nombre) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: nombre } })),
     },
   };
+  s.contactPoint = Object.values(telefonos).map((t) => ({
+    "@type": "ContactPoint",
+    telephone: `+${soloDigitos(t.numero)}`,
+    contactType: t.uso,
+    areaServed: "CR",
+    availableLanguage: "es",
+  }));
   if (tieneGeo) s.geo = { "@type": "GeoCoordinates", latitude: ficha.geo.lat, longitude: ficha.geo.lng };
-  if (ficha.redes?.google_maps) s.hasMap = ficha.redes.google_maps;
-  const perfiles = Object.entries(ficha.redes || {}).filter(([k, v]) => k !== "google_maps" && v).map(([, v]) => v);
+  if (enlaces.google_maps) s.hasMap = enlaces.google_maps;
+  const perfiles = Object.values(ficha.redes || {}).filter(Boolean);
   if (perfiles.length) s.sameAs = perfiles;
   return s;
 }

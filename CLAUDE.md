@@ -12,7 +12,8 @@ Sitio web oficial de In Avanti (restaurante y alimentación para empresas en La 
 
 ## Ficha maestra (`ficha.json`)
 - `ficha.json` es la única fuente de los datos del negocio: nombre, lema, dirección, GPS, teléfono, WhatsApp, correo, horario, redes, servicios, colores. Cambiar un dato ahí lo cambia en todo el sitio y en el JSON-LD.
-- Nunca escribir esos datos a mano en el HTML. Usar `{{campo}}` (texto escapado) o `{{{campo}}}` (HTML que arma `build.mjs`, como `horario_html` o `schema`). Los campos calculados (`telefono_enlace`, `wa.<mensaje>`, `mapa_url`, `waze_url`, `direccion_completa`, `anio`) están en `build.mjs`.
+- Nunca escribir esos datos a mano en el HTML. Usar `{{campo}}` (texto escapado) o `{{{campo}}}` (HTML que arma `build.mjs`, como `horario_html` o `schema`). Los campos calculados (`tel.<teléfono>`, `wa.<mensaje>`, `mapa_url`, `waze_url`, `direccion_completa`, `anio`) están en `build.mjs`.
+- Dos teléfonos en `telefonos`: `pedidos` (restaurante, llamada y WhatsApp; es el principal en Google) y `administracion` (empresas, convenios, eventos). Cada mensaje de `whatsapp_mensajes` indica a qué teléfono va. `redes` alimenta `sameAs`; `enlaces` guarda Google Maps, Waze y Uber Eats.
 - El JSON-LD `Restaurant` se genera con `{{{schema}}}`; agrega `geo` y `sameAs` solo cuando la ficha tiene coordenadas y redes.
 - Si un campo no existe, el build falla a propósito y Cloudflare no publica. Probar siempre con `node build.mjs` antes de abrir el PR.
 - `ficha.json`, `build.mjs` y `CLAUDE.md` no se publican en el sitio.

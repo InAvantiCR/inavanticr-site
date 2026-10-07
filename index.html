@@ -162,6 +162,10 @@ footer a{color:#fff}
           </ul>
         </div>
       </div>
+      <div class="cta" style="margin-top:28px">
+        <a class="btn btn-primary" href="{{wa.pedidos}}">Pedir por WhatsApp</a>
+        <a class="btn btn-outline" href="{{enlaces.uber_eats}}" target="_blank" rel="noopener">Pedir en Uber Eats</a>
+      </div>
     </div>
   </section>
 
@@ -174,8 +178,10 @@ footer a{color:#fff}
           <dd>{{direccion_completa}}</dd>
           <dt>Horario</dt>
           <dd>{{{horario_html}}}</dd>
-          <dt>Teléfono y WhatsApp</dt>
-          <dd><a href="{{telefono_enlace}}">{{telefono}}</a></dd>
+          <dt>Pedidos (llamada y WhatsApp)</dt>
+          <dd><a href="{{tel.pedidos}}">{{telefonos.pedidos.numero}}</a></dd>
+          <dt>Empresas, convenios y eventos</dt>
+          <dd><a href="{{tel.administracion}}">{{telefonos.administracion.numero}}</a></dd>
           <dt>Correo</dt>
           <dd><a href="{{correo_enlace}}">{{correo}}</a></dd>
         </dl>
@@ -196,7 +202,7 @@ footer a{color:#fff}
   <div class="wrap">
     <p><strong>{{nombre}}</strong> — {{lema}}<br>
     {{direccion_completa}}, Costa Rica<br>
-    <a href="{{telefono_enlace}}">{{telefono}}</a> · <a href="{{correo_enlace}}">{{correo}}</a></p>
+    Pedidos: <a href="{{tel.pedidos}}">{{telefonos.pedidos.numero}}</a> · Empresas: <a href="{{tel.administracion}}">{{telefonos.administracion.numero}}</a> · <a href="{{correo_enlace}}">{{correo}}</a></p>
     <p>© {{anio}} {{nombre}}. Todos los derechos reservados.</p>
   </div>
 </footer>
